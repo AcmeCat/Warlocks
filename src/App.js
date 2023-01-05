@@ -9,14 +9,15 @@ function App() {
         <p>
           THE <span className='warlocks'>WARLOCKS</span> ARE COMING...
         </p>
-        <a
+        <button className='project-button'>Project #1</button>
+        {/* <a
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+        </a> */}
       </header>
     </div>
   );

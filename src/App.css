@@ -7,9 +7,7 @@
   pointer-events: none;
 }
 
-.warlocks {
-  color: purple;
-}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -39,4 +37,25 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+/* custom css */
+
+.warlocks {
+  color: purple;
+  text-shadow: 1px 1px 2px whitesmoke;
+}
+
+.project-button {
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  background-color: darkred;
+  border: none;
+  border-radius: 5px;
+  color: whitesmoke;
+}
+
+.project-button:hover {
+  background-color: purple;
 }
