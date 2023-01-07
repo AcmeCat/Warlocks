@@ -10,16 +10,32 @@ class App extends React.Component {
       race: "Human",
       patron: "The Void",
       level: 1
+      ,
+      STR: 9,
+      DEX: 9,
+      CON: 9,
+      INT: 9,
+      WIS: 9,
+      CHA: 9
     }
     this.letsBegin = this.letsBegin.bind(this);
   }
 
   letsBegin () {
+    //let stats = [1,2,3,4,5,6];
+    let stats = this.getStats();
     this.setState({
       name: this.getName(),
       race: this.getRace(),
       patron: this.getPatron(),
       level: this.getLevel()
+      ,
+      STR: stats[0],
+      DEX: stats[1],
+      CON: stats[2],
+      INT: stats[3],
+      WIS: stats[4],
+      CHA: stats[5]
     })
   }
 
@@ -43,9 +59,11 @@ class App extends React.Component {
         </header>
         <main>
           <h2>{this.state.name}</h2>
-          <p><span>Race: </span>{this.state.race}</p>
-          <p><span>Patron: </span>{this.state.patron}</p>
-          <p><span>Level: </span>{this.state.level}</p>
+          <p><span className='title'>Race: </span>{this.state.race}</p>
+          <p><span className='title'>Patron: </span>{this.state.patron}</p>
+          <p><span className='title'>Level: </span>{this.state.level}</p>
+          <p><span className='title'>STR: </span>{this.state.STR}, <span className='title'>DEX: </span>{this.state.DEX}, <span className='title'>CON: </span>{this.state.CON},</p>
+          <p><span className='title'>INT: </span>{this.state.INT}, <span className='title'>WIS: </span>{this.state.WIS}, <span className='title'>CHA: </span>{this.state.CHA}</p>
         </main>
         <Footer/>
       </div>
@@ -74,6 +92,25 @@ class App extends React.Component {
 
   getLevel = () => {return Math.floor(Math.random() * 20 + 1);}
 
+  getStats = () => {
+    let initialStats = [9, 9, 9, 9, 9, 9];
+    let rolledStats = initialStats.map(_ => this.randomDiceRoll(3, 6, 0)).sort((a, b) => a < b);
+    let assignedStats = this.assignStats(rolledStats);
+    return assignedStats;
+  }
+
+  assignStats = (stats) => {
+    let higherDexThanCon = this.randomBool(50);
+    let higherIntThanWis = this.randomBool(50);
+    let prefs = [5, higherDexThanCon ? 1 : 2, higherDexThanCon ? 2 : 1, higherIntThanWis? 3 : 4, higherIntThanWis? 4 : 3, 1]
+    let assigned = prefs.map((ele) => stats[ele]);
+    return assigned;
+  }
+
+  // adjustStatsForRace = (arr) => {}
+
+  // adjustStatsForLevel = (arr) => {}
+
   //utility functions
 
   randomItem = (arr) => {
@@ -82,6 +119,12 @@ class App extends React.Component {
 
   randomBool = (percent) => {
     return Math.floor(Math.random() * 100) < percent ? true : false;
+  }
+
+  //reflects diceroll shorthand from d20 system eg. 3d6+3, 8d10+16, 2d4-1, etc.
+  randomDiceRoll = (number, type, modifier) => {
+    let rolls = new Array(number).fill(1).map(_ => {return Math.floor(Math.random() * type + 1)});
+    return rolls.reduce((acc, val) => acc + val, modifier);
   }
 
   firstNames = ['Harry', 'Gerry', 'Mavis', 'Verdun', 'Greg', 'Tim', 'Bartelomeo', 'Pontius', 'Gront', 'Miff', 'Pildrum', 'Arriety', 'Norj', 'Sem'];
