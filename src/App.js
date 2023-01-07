@@ -44,6 +44,7 @@ class App extends React.Component {
           <p><span>Patron: </span>{this.state.patron}</p>
           <p><span>Level: </span>{this.state.level}</p>
         </main>
+        <Footer/>
       </div>
     );
   }
@@ -76,6 +77,15 @@ class App extends React.Component {
   nameAdjectives = ['Magnificent', 'Magic', 'Exceptional', 'Rugged', 'Wicked', 'Pestilent', 'Mad', 'Sickening', 'Malodorous', 'Rad', 'Malevolent', 'Bright', 'Dim', 'Gloomy', 'Pensive', 'Miserly']
   patrons = ['The Entity', 'Entropy', 'Ancient Unicorn', 'Arch Fey', 'Madness', 'Elder God', 'Arch Fiend', 'Devil', 'The Depths', 'Darkness', 'Celestial', 'Arch Lich'];
 
+}
+
+function Footer() {
+  return (
+    <div className='Footer'>
+      <p>Wizards of the Coast, Dungeons & Dragons, and their logos are trademarks of Wizards of the Coast LLC in the United States and other countries. © 2015 Wizards. All Rights Reserved.</p>
+      <p>This (Web site) is not affiliated with, endorsed, sponsored, or specifically approved by Wizards of the Coast LLC. This (Web site) may use the trademarks and other intellectual property of Wizards of the Coast LLC, which is permitted under Wizards' Fan Site Policy (link). For example, Dungeons & Dragons® is a trademark(s) of Wizards of the Coast. For more information about Wizards of the Coast or any of Wizards' trademarks or other intellectual property, please visit their website at (www.wizards.com).</p>
+    </div>
+  )
 }
 
 export default App;

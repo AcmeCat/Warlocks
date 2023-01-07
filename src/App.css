@@ -59,3 +59,10 @@
 .project-button:hover {
   background-color: purple;
 }
+
+/* footer */
+.Footer {
+  background-color: #282c34;
+  font-size: 0.8rem;
+  color: whitesmoke;
+}
