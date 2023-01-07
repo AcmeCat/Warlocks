@@ -6,14 +6,18 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "NAME"
+      name: "NAME",
+      patron: "The Void",
+      level: 1
     }
     this.letsBegin = this.letsBegin.bind(this);
   }
 
   letsBegin () {
     this.setState({
-      name: this.getName()
+      name: this.getName(),
+      patron: this.getPatron(),
+      level: this.getLevel()
     })
   }
 
@@ -37,6 +41,8 @@ class App extends React.Component {
         </header>
         <main>
           <h2>{this.state.name}</h2>
+          <p><span>Patron: </span>{this.state.patron}</p>
+          <p><span>Level: </span>{this.state.level}</p>
         </main>
       </div>
     );
@@ -52,6 +58,12 @@ class App extends React.Component {
     return name; 
   }
 
+  getPatron = () => {
+    return this.randomItem(this.patrons);
+  }
+
+  getLevel = () => {return Math.floor(Math.random() * 20 + 1);}
+
   randomItem = (arr) => {
     return arr[Math.floor(Math.random() * arr.length)];
   }
@@ -62,6 +74,8 @@ class App extends React.Component {
 
   firstNames = ['Harry', 'Gerry', 'Mavis', 'Verdun', 'Greg', 'Tim', 'Bartelomeo', 'Pontius', 'Gront', 'Miff', 'Pildrum', 'Arriety', 'Norj', 'Sem'];
   nameAdjectives = ['Magnificent', 'Magic', 'Exceptional', 'Rugged', 'Wicked', 'Pestilent', 'Mad', 'Sickening', 'Malodorous', 'Rad', 'Malevolent', 'Bright', 'Dim', 'Gloomy', 'Pensive', 'Miserly']
+  patrons = ['The Entity', 'Entropy', 'Ancient Unicorn', 'Arch Fey', 'Madness', 'Elder God', 'Arch Fiend', 'Devil', 'The Depths', 'Darkness', 'Celestial', 'Arch Lich'];
+
 }
 
 export default App;
