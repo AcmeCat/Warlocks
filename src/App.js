@@ -7,7 +7,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       name: "NAME",
-      race: "Human",
+      species: "Human",
       patron: "The Void",
       level: 1
       ,
@@ -23,10 +23,10 @@ class App extends React.Component {
 
   letsBegin () {
     //let stats = [1,2,3,4,5,6];
-    let stats = this.getStats();
+    let stats = this.getStats();// problem with this code here. level is set after stats, but stats uses level. need functional soln
     this.setState({
       name: this.getName(),
-      race: this.getRace(),
+      species: this.getSpecies(),
       patron: this.getPatron(),
       level: this.getLevel()
       ,
@@ -59,7 +59,7 @@ class App extends React.Component {
         </header>
         <main>
           <h2>{this.state.name}</h2>
-          <p><span className='title'>Race: </span>{this.state.race}</p>
+          <p><span className='title'>Species: </span>{this.state.species}</p>
           <p><span className='title'>Patron: </span>{this.state.patron}</p>
           <p><span className='title'>Level: </span>{this.state.level}</p>
           <p><span className='title'>STR: </span>{this.state.STR}, <span className='title'>DEX: </span>{this.state.DEX}, <span className='title'>CON: </span>{this.state.CON},</p>
@@ -82,8 +82,8 @@ class App extends React.Component {
     return name; 
   }
 
-  getRace = () => {
-    return this.randomItem(this.races);
+  getSpecies = () => {
+    return this.randomItem(this.species);
   }
 
   getPatron = () => {
@@ -93,23 +93,52 @@ class App extends React.Component {
   getLevel = () => {return Math.floor(Math.random() * 20 + 1);}
 
   getStats = () => {
-    let initialStats = [9, 9, 9, 9, 9, 9];
-    let rolledStats = initialStats.map(_ => this.randomDiceRoll(3, 6, 0)).sort((a, b) => a < b);
-    let assignedStats = this.assignStats(rolledStats);
-    return assignedStats;
+    let initialStats = [15, 14, 13, 12, 10, 8];
+    let assignedStats = this.assignStats(initialStats);
+    let adjustedStats = this.adjustStatsForBackground(assignedStats);
+    let leveledStats = this.adjustStatsForLevel(adjustedStats);
+    return leveledStats;
   }
 
   assignStats = (stats) => {
     let higherDexThanCon = this.randomBool(50);
     let higherIntThanWis = this.randomBool(50);
-    let prefs = [5, higherDexThanCon ? 1 : 2, higherDexThanCon ? 2 : 1, higherIntThanWis? 3 : 4, higherIntThanWis? 4 : 3, 1]
+    let prefs = [5, higherDexThanCon ? 1 : 2, higherDexThanCon ? 2 : 1, higherIntThanWis? 3 : 4, higherIntThanWis? 4 : 3, 0]
     let assigned = prefs.map((ele) => stats[ele]);
     return assigned;
   }
 
-  // adjustStatsForRace = (arr) => {}
+  adjustStatsForBackground = (arr) => {
+    let stats = [...arr];
+    let primary = Math.floor(Math.random() * 6);
+    let secondary = 0;
+    do {
+      secondary = Math.floor(Math.random() * 6);
+    } while (primary === secondary);
+    stats[primary] = stats[primary] + 2;
+    stats[secondary] = stats[secondary] + 1;
+    return stats;
+  }
 
-  // adjustStatsForLevel = (arr) => {}
+  adjustStatsForLevel = (arr) => {
+    let stats = [...arr];
+    let bonus = Math.floor(this.state.level / 4) * 2;
+    console.log(this.state.level / 4);
+    for (let i = bonus; i > 0; i--){
+      if (stats[5] > 19) {
+        if (this.randomBool(33)){
+          stats[5]++;
+        } else if (this.randomBool(50)){
+          stats[3]++;
+        } else {
+          stats[2]++;
+        }
+      } else {
+        stats[5]++;
+      }
+    }
+    return stats;
+  }
 
   //utility functions
 
@@ -130,7 +159,7 @@ class App extends React.Component {
   firstNames = ['Harry', 'Gerry', 'Mavis', 'Verdun', 'Greg', 'Tim', 'Bartelomeo', 'Pontius', 'Gront', 'Miff', 'Pildrum', 'Arriety', 'Norj', 'Sem'];
   nameAdjectives = ['Magnificent', 'Magic', 'Exceptional', 'Rugged', 'Wicked', 'Pestilent', 'Mad', 'Sickening', 'Malodorous', 'Rad', 'Malevolent', 'Bright', 'Dim', 'Gloomy', 'Pensive', 'Miserly']
   patrons = ['The Entity', 'Entropy', 'Ancient Unicorn', 'Arch Fey', 'Madness', 'Elder God', 'Arch Fiend', 'Devil', 'The Depths', 'Darkness', 'Celestial', 'Arch Lich', 'The Void'];
-  races = ['Human', 'Elf', 'Half-Elf', 'Dwarf', 'Halfling', 'Gnome', 'Dragonborn', 'Half-Orc', 'Tiefling'];
+  species = ['Human', 'Elf', 'Half-Elf', 'Dwarf', 'Halfling', 'Gnome', 'Dragonborn', 'Half-Orc', 'Tiefling'];
 }
 
 function Footer() {
