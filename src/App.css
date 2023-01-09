@@ -65,6 +65,19 @@ main {
   padding: 3rem;
 }
 
+.warlock-name {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 3rem;
+  color: darkred;
+  margin-bottom: 16px;
+}
+.running-title {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-style: italic;
+  color: #282c34;
+  font-weight: 600;
+}
+
 .title {
   font-weight: 800;
 }
