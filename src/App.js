@@ -9,27 +9,28 @@ class App extends React.Component {
       name: "NAME",
       species: "Human",
       patron: "The Void",
-      level: 1
-      ,
+      level: 1,
       STR: 9,
       DEX: 9,
       CON: 9,
       INT: 9,
       WIS: 9,
-      CHA: 9
+      CHA: 9,
+      hitPoints: 1
     }
     this.letsBegin = this.letsBegin.bind(this);
   }
 
   letsBegin () {
-    //let stats = [1,2,3,4,5,6];
-    let stats = this.getStats();// problem with this code here. level is set after stats, but stats uses level. need functional soln
+    let level = this.getLevel();
     this.setState({
+      level: level,
       name: this.getName(),
       species: this.getSpecies(),
-      patron: this.getPatron(),
-      level: this.getLevel()
-      ,
+      patron: this.getPatron()
+    })
+    let stats = this.getStats(level);
+    this.setState({
       STR: stats[0],
       DEX: stats[1],
       CON: stats[2],
@@ -62,8 +63,12 @@ class App extends React.Component {
           <p><span className='title'>Species: </span>{this.state.species}</p>
           <p><span className='title'>Patron: </span>{this.state.patron}</p>
           <p><span className='title'>Level: </span>{this.state.level}</p>
-          <p><span className='title'>STR: </span>{this.state.STR}, <span className='title'>DEX: </span>{this.state.DEX}, <span className='title'>CON: </span>{this.state.CON},</p>
-          <p><span className='title'>INT: </span>{this.state.INT}, <span className='title'>WIS: </span>{this.state.WIS}, <span className='title'>CHA: </span>{this.state.CHA}</p>
+          <p><span className='title'>STR: </span>{this.state.STR} ({this.modString(this.getModFromStat(this.state.STR))}), 
+            <span className='title'>DEX: </span>{this.state.DEX} ({this.modString(this.getModFromStat(this.state.DEX))}), 
+            <span className='title'>CON: </span>{this.state.CON} ({this.modString(this.getModFromStat(this.state.CON))}),</p>
+          <p><span className='title'>INT: </span>{this.state.INT} ({this.modString(this.getModFromStat(this.state.INT))}), 
+            <span className='title'>WIS: </span>{this.state.WIS} ({this.modString(this.getModFromStat(this.state.WIS))}), 
+            <span className='title'>CHA: </span>{this.state.CHA} ({this.modString(this.getModFromStat(this.state.CHA))})</p>
         </main>
         <Footer/>
       </div>
@@ -92,11 +97,12 @@ class App extends React.Component {
 
   getLevel = () => {return Math.floor(Math.random() * 20 + 1);}
 
-  getStats = () => {
+  /* stats */
+  getStats = (level) => {
     let initialStats = [15, 14, 13, 12, 10, 8];
     let assignedStats = this.assignStats(initialStats);
     let adjustedStats = this.adjustStatsForBackground(assignedStats);
-    let leveledStats = this.adjustStatsForLevel(adjustedStats);
+    let leveledStats = this.adjustStatsForLevel(adjustedStats, level);
     return leveledStats;
   }
 
@@ -120,10 +126,10 @@ class App extends React.Component {
     return stats;
   }
 
-  adjustStatsForLevel = (arr) => {
+  adjustStatsForLevel = (arr, lvl) => {
     let stats = [...arr];
-    let bonus = Math.floor(this.state.level / 4) * 2;
-    console.log(this.state.level / 4);
+    let bonus = Math.floor(lvl / 4) * 2;
+    console.log(lvl / 4);
     for (let i = bonus; i > 0; i--){
       if (stats[5] > 19) {
         if (this.randomBool(33)){
@@ -138,6 +144,14 @@ class App extends React.Component {
       }
     }
     return stats;
+  }
+
+  getModFromStat = (stat) => {
+    return stat > 9 ? Math.floor((stat - 10) / 2) : Math.floor((11 - stat) / 2) * -1;
+  }
+
+  modString = (mod) => {
+    return mod < 0 ? mod.toString() : "+" + mod.toString();
   }
 
   //utility functions
