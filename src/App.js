@@ -16,7 +16,8 @@ class App extends React.Component {
       INT: 9,
       WIS: 9,
       CHA: 9,
-      hitPoints: 1
+      hitPoints: 1,
+      pact: ""
     }
     this.letsBegin = this.letsBegin.bind(this);
   }
@@ -38,6 +39,19 @@ class App extends React.Component {
       WIS: stats[4],
       CHA: stats[5]
     })
+    let hp = this.calcHitPoints(level, stats[2]);
+    this.setState({
+      hitPoints: hp
+    })
+    if (level > 2) {
+      this.setState({
+        pact: this.getPact()
+      })
+    } else{
+      this.setState({
+        pact: ''
+      })
+    }
   }
 
   render (){
@@ -59,10 +73,12 @@ class App extends React.Component {
           </a> */}
         </header>
         <main>
-          <h2>{this.state.name}</h2>
-          <p><span className='title'>Species: </span>{this.state.species}</p>
-          <p><span className='title'>Patron: </span>{this.state.patron}</p>
+          <h2 className='warlock-name'>{this.state.name}</h2>
+          <p className='running-title'>{this.state.species} Warlock, {this.randomBool(33) ? 'Devotee' : this.randomBool(50) ? 'Servant' : 'Minion'} of {this.state.patron}{this.state.pact !== '' ? ', Pact of the ' + this.state.pact : ''}</p>
+          <hr/>
           <p><span className='title'>Level: </span>{this.state.level}</p>
+          <p><span className='title'>Hit Points: </span>{this.state.hitPoints}</p>
+          <hr/>
           <p><span className='title'>STR: </span>{this.state.STR} ({this.modString(this.getModFromStat(this.state.STR))}), 
             <span className='title'>DEX: </span>{this.state.DEX} ({this.modString(this.getModFromStat(this.state.DEX))}), 
             <span className='title'>CON: </span>{this.state.CON} ({this.modString(this.getModFromStat(this.state.CON))}),</p>
@@ -96,6 +112,14 @@ class App extends React.Component {
   }
 
   getLevel = () => {return Math.floor(Math.random() * 20 + 1);}
+
+  calcHitPoints = (lvl, con) => {
+    return this.randomDiceRoll(lvl, 8, lvl * this.getModFromStat(con))
+  }
+
+  getPact = () => {
+    return this.randomItem(this.pacts);
+  }
 
   /* stats */
   getStats = (level) => {
@@ -174,6 +198,7 @@ class App extends React.Component {
   nameAdjectives = ['Magnificent', 'Magic', 'Exceptional', 'Rugged', 'Wicked', 'Pestilent', 'Mad', 'Sickening', 'Malodorous', 'Rad', 'Malevolent', 'Bright', 'Dim', 'Gloomy', 'Pensive', 'Miserly']
   patrons = ['The Entity', 'Entropy', 'Ancient Unicorn', 'Arch Fey', 'Madness', 'Elder God', 'Arch Fiend', 'Devil', 'The Depths', 'Darkness', 'Celestial', 'Arch Lich', 'The Void'];
   species = ['Human', 'Elf', 'Half-Elf', 'Dwarf', 'Halfling', 'Gnome', 'Dragonborn', 'Half-Orc', 'Tiefling'];
+  pacts = ['Blade', 'Chain', 'Tome'];
 }
 
 function Footer() {
