@@ -209,8 +209,8 @@ class App extends React.Component {
     return rolls.reduce((acc, val) => acc + val, modifier);
   }
 
-  firstNames = ['Harry', 'Gerry', 'Mavis', 'Verdun', 'Greg', 'Tim', 'Bartelomeo', 'Pontius', 'Gront', 'Miff', 'Pildrum', 'Arriety', 'Norj', 'Sem'];
-  nameAdjectives = ['Magnificent', 'Magic', 'Exceptional', 'Rugged', 'Wicked', 'Pestilent', 'Mad', 'Sickening', 'Malodorous', 'Rad', 'Malevolent', 'Bright', 'Dim', 'Gloomy', 'Pensive', 'Miserly']
+  firstNames = ['Harry', 'Gerry', 'Mavis', 'Verdun', 'Greg', 'Tim', 'Bartelomeo', 'Pontius', 'Gront', 'Miff', 'Pildrum', 'Arriety', 'Norj', 'Sem', 'Steve', 'Rodney', 'Milicent', 'Waldo', 'Eric', 'Tania', 'Rex', 'Reginald', 'Paul', 'Andrew', 'Brian', 'Bethany', 'Alden', 'Bowie', 'Brooklyn', 'Everly', 'Harlow', 'Apollo', 'Kingston', 'Zuma', 'Lyra', 'Lydia', 'Stephany', 'Byron', 'Atticus', 'Beckett', 'Jagger', 'Aleph', 'Alf', 'August', 'Calvin', 'Chance', 'Olu', 'Nassir', 'Edison'];
+  nameAdjectives = ['Magnificent', 'Magic', 'Exceptional', 'Rugged', 'Wicked', 'Pestilent', 'Mad', 'Sickening', 'Malodorous', 'Rad', 'Malevolent', 'Bright', 'Dim', 'Gloomy', 'Pensive', 'Miserly', 'Tarnished', 'Indominable', 'Flimsy', 'Surly', 'Unfriendly', 'Ugly', 'Ill-Tempered', 'Brutal', 'Grumpy', 'Perverse', 'Uncivil', 'Crusty', 'Dour', 'Irritable', 'Morose', 'Rude', 'Gentile', 'Sophisticated', 'Uncouth', 'Coolest', 'Well Seasoned', 'Rambunctious', 'Cynical', 'Inbred', 'Sharp-Witted', 'Dim-Witted', 'Smooth', 'Streetwise', 'Sauve', 'Enchanted', 'Uncultured', 'Uncool', 'Unrefined']
   patrons = ['The Entity', 'Entropy', 'Ancient Unicorn', 'Arch Fey', 'Madness', 'Elder God', 'Arch Fiend', 'Devil', 'The Depths', 'Darkness', 'Celestial', 'Arch Lich', 'The Void'];
   species = ['Human', 'Elf', 'Half-Elf', 'Dwarf', 'Halfling', 'Gnome', 'Dragonborn', 'Half-Orc', 'Tiefling'];
   pacts = ['Blade', 'Chain', 'Tome'];
