@@ -1,6 +1,7 @@
 import logo from './penta.svg';
 import './App.css';
 import React from 'react';
+//import 'public/data.json';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +18,8 @@ class App extends React.Component {
       WIS: 9,
       CHA: 9,
       hitPoints: 1,
-      pact: ""
+      pact: "",
+      proficiency: 2
     }
     this.letsBegin = this.letsBegin.bind(this);
   }
@@ -52,6 +54,10 @@ class App extends React.Component {
         pact: ''
       })
     }
+    let proficiency = this.calcProficiency(level);
+    this.setState({
+      proficiency: proficiency
+    })
   }
 
   render (){
@@ -78,6 +84,8 @@ class App extends React.Component {
           <hr/>
           <p><span className='title'>Level: </span>{this.state.level}</p>
           <p><span className='title'>Hit Points: </span>{this.state.hitPoints}</p>
+          <p><span className='title'>Armor Class: </span> 12</p>
+          <p><span className='title'>Speed: </span> 30</p>
           <hr/>
           <p><span className='title'>STR: </span>{this.state.STR} ({this.modString(this.getModFromStat(this.state.STR))}), 
             <span className='title'>DEX: </span>{this.state.DEX} ({this.modString(this.getModFromStat(this.state.DEX))}), 
@@ -85,6 +93,9 @@ class App extends React.Component {
           <p><span className='title'>INT: </span>{this.state.INT} ({this.modString(this.getModFromStat(this.state.INT))}), 
             <span className='title'>WIS: </span>{this.state.WIS} ({this.modString(this.getModFromStat(this.state.WIS))}), 
             <span className='title'>CHA: </span>{this.state.CHA} ({this.modString(this.getModFromStat(this.state.CHA))})</p>
+          <hr/>
+          <p><span className='title'>Proficiency Bonus: </span> +{this.state.proficiency}</p>
+          <p><span className='title'>Saving Throws: </span> WIS +{this.state.proficiency + this.getModFromStat(this.state.WIS)}, CHA +{this.state.proficiency + this.getModFromStat(this.state.CHA)}</p>
         </main>
         <Footer/>
       </div>
@@ -119,6 +130,10 @@ class App extends React.Component {
 
   getPact = () => {
     return this.randomItem(this.pacts);
+  }
+
+  calcProficiency = (lvl) => {
+    return Math.floor((lvl + 7) / 4);
   }
 
   /* stats */
