@@ -19,8 +19,7 @@ class App extends React.Component {
       CHA: 9,
       hitPoints: 1,
       pact: "",
-      proficiency: 2,
-      spells: [[], [], [], [], [], [], [], [], [], []]
+      proficiency: 2
     }
     this.letsBegin = this.letsBegin.bind(this);
   }
@@ -61,11 +60,6 @@ class App extends React.Component {
     this.setState({
       proficiency: proficiency
     })
-
-    let spells = this.getSpells(level);
-    this.setState({
-      spells: spells
-    })
   }
 
   render (){
@@ -105,10 +99,9 @@ class App extends React.Component {
           <p><span className='title'>Proficiency Bonus: </span> +{this.state.proficiency}</p>
           <p><span className='title'>Saving Throws: </span> WIS +{this.state.proficiency + this.getModFromStat(this.state.WIS)}, CHA +{this.state.proficiency + this.getModFromStat(this.state.CHA)}</p>
           <hr/>
-          <h3>Spells</h3>
-          <p><span className='title'>Spell Slots: </span> 1 <span className='title'>Slot Level:</span> 1</p>
-          <p><span className='title'>Cantrips: </span> {this.state.spells[0].join(", ")}</p>
-          <p><span className='title'>Level 1: </span> {this.state.spells[1].join(", ")}</p>
+          <Spells
+            level={this.state.level}
+          />
         </main>
         <Footer/>
       </div>
@@ -205,21 +198,7 @@ class App extends React.Component {
   modString = (mod) => {
     return mod < 0 ? mod.toString() : "+" + mod.toString();
   }
-
-  //spells
-
-  getSpells = (lvl) => {
-    let numCantrips = Number.parseInt(data.levels[lvl]["cantrips"]);
-    let allCantrips = [...data.spells.cantrips];
-    let selectedCantrips = ["Eldritch Blast"];
-    for (let i = 1; i < numCantrips; i++) {
-      let ran = Math.floor(Math.random() * allCantrips.length)
-      selectedCantrips.push(allCantrips.splice(ran, 1));
-    }
-
-    return [selectedCantrips, ["Armor of Agathys"], [], [], [], [], [], [], [], []];
-  }
-
+  
   //utility functions
 
   randomItem = (arr) => {
@@ -241,6 +220,33 @@ class App extends React.Component {
   patrons = ['The Entity', 'Entropy', 'Ancient Unicorn', 'Arch Fey', 'Madness', 'Elder God', 'Arch Fiend', 'Devil', 'The Depths', 'Darkness', 'Celestial', 'Arch Lich', 'The Void'];
   species = ['Human', 'Elf', 'Half-Elf', 'Dwarf', 'Halfling', 'Gnome', 'Dragonborn', 'Half-Orc', 'Tiefling'];
   pacts = ['Blade', 'Chain', 'Tome'];
+}
+
+function Spells({level}) {
+
+  let numCantrips = Number.parseInt(data.levels[level]["cantrips"]);
+  let allCantrips = [...data.spells.cantrips];
+  let selectedCantrips = ["Eldritch Blast"];
+  for (let i = 1; i < numCantrips; i++) {
+    let ran = Math.floor(Math.random() * allCantrips.length)
+    selectedCantrips.push(allCantrips.splice(ran, 1));
+  }
+
+  let selectedSpells = [selectedCantrips, ["Armor of Agathys"], [], [], [], [], [], [], [], []];
+
+  return (
+    <div>
+      <h3>Spells</h3>
+      <p><span className='title'>Spell Slots: </span> 1 <span className='title'>Slot Level:</span> 1</p>
+      <p><span className='title'>Cantrips: </span> {selectedSpells[0].join(", ")}</p>
+      <p><span className='title'>Level 1: </span> {selectedSpells[1].join(", ")}</p>
+    </div> 
+  )
+  //spells
+
+  
+  
+  
 }
 
 function Footer() {
