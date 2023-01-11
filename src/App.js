@@ -1,7 +1,7 @@
 import logo from './penta.svg';
 import './App.css';
 import React from 'react';
-//import 'public/data.json';
+import data from '../src/data.json';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,10 +19,13 @@ class App extends React.Component {
       CHA: 9,
       hitPoints: 1,
       pact: "",
-      proficiency: 2
+      proficiency: 2,
+      spells: [[], [], [], [], [], [], [], [], [], []]
     }
     this.letsBegin = this.letsBegin.bind(this);
   }
+
+  
 
   letsBegin () {
     let level = this.getLevel();
@@ -57,6 +60,11 @@ class App extends React.Component {
     let proficiency = this.calcProficiency(level);
     this.setState({
       proficiency: proficiency
+    })
+
+    let spells = this.getSpells(level);
+    this.setState({
+      spells: spells
     })
   }
 
@@ -96,6 +104,11 @@ class App extends React.Component {
           <hr/>
           <p><span className='title'>Proficiency Bonus: </span> +{this.state.proficiency}</p>
           <p><span className='title'>Saving Throws: </span> WIS +{this.state.proficiency + this.getModFromStat(this.state.WIS)}, CHA +{this.state.proficiency + this.getModFromStat(this.state.CHA)}</p>
+          <hr/>
+          <h3>Spells</h3>
+          <p><span className='title'>Spell Slots: </span> 1 <span className='title'>Slot Level:</span> 1</p>
+          <p><span className='title'>Cantrips: </span> {this.state.spells[0].join(", ")}</p>
+          <p><span className='title'>Level 1: </span> {this.state.spells[1].join(", ")}</p>
         </main>
         <Footer/>
       </div>
@@ -191,6 +204,12 @@ class App extends React.Component {
 
   modString = (mod) => {
     return mod < 0 ? mod.toString() : "+" + mod.toString();
+  }
+
+  //spells
+
+  getSpells = (lvl) => {
+    return [["Eldritch Blast", "Blade Ward"], ["Armor of Agathys"], [], [], [], [], [], [], [], []];
   }
 
   //utility functions
