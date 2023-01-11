@@ -1,0 +1,7 @@
+{ "spells": {
+    "cantrips": ["Blade Ward", "Chill Touch", "Eldritch Blast", "Friends", "Mage Hand", "Minor Illusion", "Poison Spray", "Prestidigitation", "True Strike"],
+    "level1": ["Armor of Agathys", "Arms of Hadar", "Charm Person", "Comprehend Languages", "Expeditious Retreat", "Hellish Rebuke", "Hex", "Illusory Script", "Protection from Evil and Good", "Unseen Servant", "Witch Bolt"],
+    "level2": ["Cloud of Daggers", "Crown of Madness", "Darkness"]
+}
+
+}
