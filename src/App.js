@@ -209,7 +209,15 @@ class App extends React.Component {
   //spells
 
   getSpells = (lvl) => {
-    return [["Eldritch Blast", "Blade Ward"], ["Armor of Agathys"], [], [], [], [], [], [], [], []];
+    let numCantrips = Number.parseInt(data.levels[lvl]["cantrips"]);
+    let allCantrips = [...data.spells.cantrips];
+    let selectedCantrips = ["Eldritch Blast"];
+    for (let i = 1; i < numCantrips; i++) {
+      let ran = Math.floor(Math.random() * allCantrips.length)
+      selectedCantrips.push(allCantrips.splice(ran, 1));
+    }
+
+    return [selectedCantrips, ["Armor of Agathys"], [], [], [], [], [], [], [], []];
   }
 
   //utility functions
