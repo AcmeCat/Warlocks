@@ -198,7 +198,7 @@ class App extends React.Component {
   modString = (mod) => {
     return mod < 0 ? mod.toString() : "+" + mod.toString();
   }
-  
+
   //utility functions
 
   randomItem = (arr) => {
@@ -237,7 +237,7 @@ function Spells({level}) {
   return (
     <div>
       <h3>Spells</h3>
-      <p><span className='title'>Spell Slots: </span> 1 <span className='title'>Slot Level:</span> 1</p>
+      <p><span className='title'>Spell Slots: </span> {data.levels[level]["spell slots"]} <span className='title'>Slot Level:</span> {data.levels[level]["slot level"]}</p>
       <p><span className='title'>Cantrips: </span> {selectedSpells[0].join(", ")}</p>
       <p><span className='title'>Level 1: </span> {selectedSpells[1].join(", ")}</p>
     </div> 
