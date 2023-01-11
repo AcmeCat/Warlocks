@@ -1,7 +1,149 @@
-{ "spells": {
-    "cantrips": ["Blade Ward", "Chill Touch", "Eldritch Blast", "Friends", "Mage Hand", "Minor Illusion", "Poison Spray", "Prestidigitation", "True Strike"],
-    "level1": ["Armor of Agathys", "Arms of Hadar", "Charm Person", "Comprehend Languages", "Expeditious Retreat", "Hellish Rebuke", "Hex", "Illusory Script", "Protection from Evil and Good", "Unseen Servant", "Witch Bolt"],
-    "level2": ["Cloud of Daggers", "Crown of Madness", "Darkness"]
-}
-
+{ 
+    "spells": {
+        "cantrips": ["Blade Ward", "Chill Touch", "Eldritch Blast", "Friends", "Mage Hand", "Minor Illusion", "Poison Spray", "Prestidigitation", "True Strike"],
+        "level1": ["Armor of Agathys", "Arms of Hadar", "Charm Person", "Comprehend Languages", "Expeditious Retreat", "Hellish Rebuke", "Hex", "Illusory Script", "Protection from Evil and Good", "Unseen Servant", "Witch Bolt"],
+        "level2": ["Cloud of Daggers", "Crown of Madness", "Darkness"]
+    }, 
+    "levels": {
+        "1": {
+            "cantrips": 2,
+            "spells known": 2,
+            "spell slots": 1,
+            "slot level": 1,
+            "invocations": 0
+        },
+        "2": {
+            "cantrips": 2,
+            "spells known": 3,
+            "spell slots": 2,
+            "slot level": 1,
+            "invocations": 2
+        },
+        "3": {
+            "cantrips": 2,
+            "spells known": 4,
+            "spell slots": 2,
+            "slot level": 2,
+            "invocations": 2
+        },
+        "4": {
+            "cantrips": 3,
+            "spells known": 5,
+            "spell slots": 2,
+            "slot level": 2,
+            "invocations": 2
+        },
+        "5": {
+            "cantrips": 3,
+            "spells known": 6,
+            "spell slots": 2,
+            "slot level": 3,
+            "invocations": 3
+        },
+        "6": {
+            "cantrips": 3,
+            "spells known": 7,
+            "spell slots": 2,
+            "slot level": 3,
+            "invocations": 3
+        },
+        "7": {
+            "cantrips": 3,
+            "spells known": 8,
+            "spell slots": 2,
+            "slot level": 4,
+            "invocations": 4
+        },
+        "8": {
+            "cantrips": 3,
+            "spells known": 9,
+            "spell slots": 2,
+            "slot level": 4,
+            "invocations": 4
+        },
+        "9": {
+            "cantrips": 3,
+            "spells known": 10,
+            "spell slots": 2,
+            "slot level": 5,
+            "invocations": 5
+        },
+        "10": {
+            "cantrips": 4,
+            "spells known": 10,
+            "spell slots": 2,
+            "slot level": 5,
+            "invocations": 5
+        },
+        "11": {
+            "cantrips": 4,
+            "spells known": 11,
+            "spell slots": 3,
+            "slot level": 5,
+            "invocations": 5
+        },
+        "12": {
+            "cantrips": 4,
+            "spells known": 11,
+            "spell slots": 3,
+            "slot level": 5,
+            "invocations": 6
+        },
+        "13": {
+            "cantrips": 4,
+            "spells known": 12,
+            "spell slots": 3,
+            "slot level": 5,
+            "invocations": 6
+        },
+        "14": {
+            "cantrips": 4,
+            "spells known": 12,
+            "spell slots": 3,
+            "slot level": 5,
+            "invocations": 6
+        },
+        "15": {
+            "cantrips": 4,
+            "spells known": 13,
+            "spell slots": 3,
+            "slot level": 5,
+            "invocations": 7
+        },
+        "16": {
+            "cantrips": 4,
+            "spells known": 13,
+            "spell slots": 3,
+            "slot level": 5,
+            "invocations": 7
+        },
+        "17": {
+            "cantrips": 4,
+            "spells known": 14,
+            "spell slots": 4,
+            "slot level": 5,
+            "invocations": 7
+        },
+        "18": {
+            "cantrips": 4,
+            "spells known": 14,
+            "spell slots": 4,
+            "slot level": 5,
+            "invocations": 8
+        },
+        "19": {
+            "cantrips": 4,
+            "spells known": 15,
+            "spell slots": 4,
+            "slot level": 5,
+            "invocations": 8
+        },
+        "20": {
+            "cantrips": 4,
+            "spells known": 15,
+            "spell slots": 4,
+            "slot level": 5,
+            "invocations": 8
+        }
+    }
 }
