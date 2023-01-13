@@ -3,9 +3,13 @@ import './App.css';
 import React from 'react';
 //import data from '../src/data.json';
 import Spells from './Components/Spells.js'
+//import {Link} from 'react-scroll'
 
 
 class App extends React.Component {
+
+  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -27,8 +31,10 @@ class App extends React.Component {
   }
 
   
+  
 
   letsBegin () {
+    
     let level = this.getLevel();
     this.setState({
       level: level,
@@ -62,9 +68,16 @@ class App extends React.Component {
     this.setState({
       proficiency: proficiency
     })
+
+    //scroll to stat block
+    const element = document.getElementById('stat-block');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   render (){
+    
     return (
       <div className="App">
         <header className="App-header">
@@ -73,16 +86,9 @@ class App extends React.Component {
             THE <span className='warlocks'>WARLOCKS</span> ARE COMING...
           </p>
           <button className='project-button' onClick={this.letsBegin}>generate</button>
-          {/* <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a> */}
         </header>
-        <main>
+        <main id='stat-block'>
+          
           <h2 className='warlock-name'>{this.state.name}</h2>
           <p className='running-title'>{this.state.species} Warlock, {this.randomBool(33) ? 'Devotee' : this.randomBool(50) ? 'Servant' : 'Minion'} of {this.state.patron}{this.state.pact !== '' ? ', Pact of the ' + this.state.pact : ''}</p>
           <hr/>
