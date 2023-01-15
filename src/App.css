@@ -82,6 +82,16 @@ main {
   font-weight: 800;
 }
 
+hr {
+  border: darkred 1px solid;
+}
+
+h3 {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1.5rem;
+  color: darkred;
+}
+
 /* footer */
 .Footer {
   background-color: #282c34;
