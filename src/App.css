@@ -54,6 +54,7 @@
   border: none;
   border-radius: 5px;
   color: whitesmoke;
+  margin-top: 2rem;
 }
 
 .project-button:hover {

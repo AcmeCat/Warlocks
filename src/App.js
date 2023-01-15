@@ -108,6 +108,8 @@ class App extends React.Component {
           <p><span className='title'>Saving Throws: </span> WIS +{this.state.proficiency + this.getModFromStat(this.state.WIS)}, CHA +{this.state.proficiency + this.getModFromStat(this.state.CHA)}</p>
           <hr/>
           <Spells level={this.state.level}/>
+          <hr/>
+          <button className='project-button' onClick={this.letsBegin}>another</button>
         </main>
         <Footer/>
       </div>
