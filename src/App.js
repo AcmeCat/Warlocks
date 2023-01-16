@@ -3,6 +3,7 @@ import './App.css';
 import React from 'react';
 //import data from '../src/data.json';
 import Spells from './Components/Spells.js'
+import Invocations from './Components/Invocations';
 //import {Link} from 'react-scroll'
 
 
@@ -106,6 +107,8 @@ class App extends React.Component {
           <hr/>
           <p><span className='title'>Proficiency Bonus: </span> +{this.state.proficiency}</p>
           <p><span className='title'>Saving Throws: </span> WIS +{this.state.proficiency + this.getModFromStat(this.state.WIS)}, CHA +{this.state.proficiency + this.getModFromStat(this.state.CHA)}</p>
+          <hr/>
+          <Invocations level={this.state.level} pact={this.state.pact}/>
           <hr/>
           <Spells level={this.state.level}/>
           <hr/>
