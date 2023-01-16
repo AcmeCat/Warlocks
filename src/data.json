@@ -153,5 +153,31 @@
             "slot level": 5,
             "invocations": 8
         }
+    },
+    "invocations": {
+        "1": {
+            "All": ["Agonizing Blast", "Armor of Shadows", "Beast Speech", "Beguiling Influence", "Devils Sight", "Eldritch Sight", "Eldritch Spear", "Eyes of the Rune Keeper", 
+            "Fiendish Vigor", "Gaze of Two Minds", "Mask of Many Faces", "Misty Visions", "Repelling Blast", "Thief of the Five Fates"],
+            "Chain": ["Voice of the Chain Master"],
+            "Tome": ["Book of Ancient Secrets"]
+        },
+        "5": {
+            "All": ["Mire the Mind", "One with Shadows", "Sign of Ill Omen"],
+            "Blade": ["Thirsting Blade"]
+        },
+        "7": {
+            "All": ["Bewitching Whispers", "Dreadful Word", "Sculptor of Flesh"]
+        },
+        "9": {
+            "All": ["Ascendant Step", "Minions of Chaos", "Otherworldly Leap", "Whisper of the Grave"]
+        },
+        "12": {
+            "Blade": ["Lifedrinker"]
+        },
+        "15": {
+            "All": ["Master of Myriad Forms", "Visions of Distant Realms", "Witch Sight"],
+            "Chain": ["Chains of Carceri"]
+        }
+
     }
 }
