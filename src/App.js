@@ -19,12 +19,15 @@ class App extends React.Component {
       species: "Human",
       patron: "The Void",
       level: 1,
-      STR: 9,
-      DEX: 9,
-      CON: 9,
-      INT: 9,
-      WIS: 9,
-      CHA: 9,
+      attributes: {
+        STR: {value: 9, mod: 0},
+        DEX: {value: 9, mod: 0},
+        CON: {value: 9, mod: 0},
+        INT: {value: 9, mod: 0},
+        WIS: {value: 9, mod: 0},
+        CHA: {value: 9, mod: 0},
+
+      },
       hitPoints: 1,
       pact: "",
       proficiency: 2
@@ -46,14 +49,16 @@ class App extends React.Component {
     })
     let stats = this.getStats(level);
     this.setState({
-      STR: stats[0],
-      DEX: stats[1],
-      CON: stats[2],
-      INT: stats[3],
-      WIS: stats[4],
-      CHA: stats[5]
+      attributes: {
+        STR: {value: stats[0], mod: this.getModFromStat(stats[0])},
+        DEX: {value: stats[1], mod: this.getModFromStat(stats[1])},
+        CON: {value: stats[2], mod: this.getModFromStat(stats[2])},
+        INT: {value: stats[3], mod: this.getModFromStat(stats[3])},
+        WIS: {value: stats[4], mod: this.getModFromStat(stats[4])},
+        CHA: {value: stats[5], mod: this.getModFromStat(stats[5])}
+      }
     })
-    let hp = this.calcHitPoints(level, stats[2]);
+    let hp = this.calcHitPoints(level, this.getModFromStat(stats[2]));
     this.setState({
       hitPoints: hp
     })
@@ -99,8 +104,7 @@ class App extends React.Component {
           <p><span className='title'>Armor Class: </span> 12</p>
           <p><span className='title'>Speed: </span> 30</p>
           <hr/>
-          <Attributes att={{"STR": this.state.STR, "DEX": this.state.DEX, "CON": this.state.CON, 
-                            "INT": this.state.INT, "WIS": this.state.WIS, "CHA": this.state.CHA}}/>
+          <Attributes att={this.state.attributes}/>
           {/* <p><span className='title'>STR: </span>{this.state.STR} ({this.modString(this.getModFromStat(this.state.STR))}), 
             <span className='title'>DEX: </span>{this.state.DEX} ({this.modString(this.getModFromStat(this.state.DEX))}), 
             <span className='title'>CON: </span>{this.state.CON} ({this.modString(this.getModFromStat(this.state.CON))}),</p>
@@ -109,7 +113,7 @@ class App extends React.Component {
             <span className='title'>CHA: </span>{this.state.CHA} ({this.modString(this.getModFromStat(this.state.CHA))})</p> */}
           <hr/>
           <p><span className='title'>Proficiency Bonus: </span> +{this.state.proficiency}</p>
-          <p><span className='title'>Saving Throws: </span> WIS +{this.state.proficiency + this.getModFromStat(this.state.WIS)}, CHA +{this.state.proficiency + this.getModFromStat(this.state.CHA)}</p>
+          <p><span className='title'>Saving Throws: </span> WIS +{this.state.proficiency + this.getModFromStat(this.state.attributes.WIS.value)}, CHA +{this.state.proficiency + this.getModFromStat(this.state.attributes.CHA.value)}</p>
           <hr/>
           <Invocations level={this.state.level} pact={this.state.pact}/>
           <hr/>
@@ -144,8 +148,8 @@ class App extends React.Component {
 
   getLevel = () => {return Math.floor(Math.random() * 20 + 1);}
 
-  calcHitPoints = (lvl, con) => {
-    return this.randomDiceRoll(lvl, 8, lvl * this.getModFromStat(con))
+  calcHitPoints = (lvl, conMod) => {
+    return this.randomDiceRoll(lvl, 8, lvl * conMod)
   }
 
   getPact = () => {
@@ -204,6 +208,7 @@ class App extends React.Component {
     }
     return stats;
   }
+
 
   getModFromStat = (stat) => {
     return stat > 9 ? Math.floor((stat - 10) / 2) : Math.floor((11 - stat) / 2) * -1;
