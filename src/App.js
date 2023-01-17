@@ -4,6 +4,7 @@ import React from 'react';
 //import data from '../src/data.json';
 import Spells from './Components/Spells.js'
 import Invocations from './Components/Invocations';
+import Attributes from './Components/Attributes';
 //import {Link} from 'react-scroll'
 
 
@@ -98,12 +99,14 @@ class App extends React.Component {
           <p><span className='title'>Armor Class: </span> 12</p>
           <p><span className='title'>Speed: </span> 30</p>
           <hr/>
-          <p><span className='title'>STR: </span>{this.state.STR} ({this.modString(this.getModFromStat(this.state.STR))}), 
+          <Attributes att={{"STR": this.state.STR, "DEX": this.state.DEX, "CON": this.state.CON, 
+                            "INT": this.state.INT, "WIS": this.state.WIS, "CHA": this.state.CHA}}/>
+          {/* <p><span className='title'>STR: </span>{this.state.STR} ({this.modString(this.getModFromStat(this.state.STR))}), 
             <span className='title'>DEX: </span>{this.state.DEX} ({this.modString(this.getModFromStat(this.state.DEX))}), 
             <span className='title'>CON: </span>{this.state.CON} ({this.modString(this.getModFromStat(this.state.CON))}),</p>
           <p><span className='title'>INT: </span>{this.state.INT} ({this.modString(this.getModFromStat(this.state.INT))}), 
             <span className='title'>WIS: </span>{this.state.WIS} ({this.modString(this.getModFromStat(this.state.WIS))}), 
-            <span className='title'>CHA: </span>{this.state.CHA} ({this.modString(this.getModFromStat(this.state.CHA))})</p>
+            <span className='title'>CHA: </span>{this.state.CHA} ({this.modString(this.getModFromStat(this.state.CHA))})</p> */}
           <hr/>
           <p><span className='title'>Proficiency Bonus: </span> +{this.state.proficiency}</p>
           <p><span className='title'>Saving Throws: </span> WIS +{this.state.proficiency + this.getModFromStat(this.state.WIS)}, CHA +{this.state.proficiency + this.getModFromStat(this.state.CHA)}</p>
