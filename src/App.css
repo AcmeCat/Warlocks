@@ -1,13 +1,9 @@
-.App {
-  text-align: center;
-}
+/* header */
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
-
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -23,11 +19,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
+  color: whitesmoke;
 }
 
 @keyframes App-logo-spin {
@@ -39,15 +31,12 @@
   }
 }
 
-
-/* custom css, header */
-
 .warlocks {
   color: purple;
   text-shadow: 1px 1px 2px whitesmoke;
 }
 
-.project-button {
+.generate-button {
   font-size: 1.2rem;
   padding: 0.5rem 1rem;
   background-color: darkred;
@@ -57,13 +46,17 @@
   margin-top: 2rem;
 }
 
-.project-button:hover {
+.generate-button:hover {
   background-color: purple;
 }
 
 /* main */
-main {
+#stat-block {
   padding: 3rem;
+  width: 60%;
+  max-width: 600px;
+  margin: 3rem auto;
+  box-shadow: 5px 10px 20px black;
 }
 
 .warlock-name {
@@ -115,6 +108,7 @@ h3 {
   max-width: 7rem;
   min-width: 5rem;
   border-radius: 0.5rem;
+  text-align: center;
 }
 
 .attribute .value {
@@ -125,6 +119,14 @@ h3 {
 .attribute .modifier {
   font-size: 0.8rem;
   margin-bottom: 1rem;
+}
+
+.regenerate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 3rem auto;
 }
 
 /* footer */

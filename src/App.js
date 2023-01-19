@@ -92,34 +92,31 @@ class App extends React.Component {
           <p>
             THE <span className='warlocks'>WARLOCKS</span> ARE COMING...
           </p>
-          <button className='project-button' onClick={this.letsBegin}>generate</button>
+          <button className='generate-button' onClick={this.letsBegin}>generate</button>
         </header>
-        <main id='stat-block'>
-          
-          <h2 className='warlock-name'>{this.state.name}</h2>
-          <p className='running-title'>{this.state.species} Warlock, {this.randomBool(33) ? 'Devotee' : this.randomBool(50) ? 'Servant' : 'Minion'} of {this.state.patron}{this.state.pact !== '' ? ', Pact of the ' + this.state.pact : ''}</p>
-          <hr/>
-          <p><span className='title'>Level: </span>{this.state.level}</p>
-          <p><span className='title'>Hit Points: </span>{this.state.hitPoints}</p>
-          <p><span className='title'>Armor Class: </span> 12</p>
-          <p><span className='title'>Speed: </span> 30</p>
-          <hr/>
-          <Attributes att={this.state.attributes}/>
-          {/* <p><span className='title'>STR: </span>{this.state.STR} ({this.modString(this.getModFromStat(this.state.STR))}), 
-            <span className='title'>DEX: </span>{this.state.DEX} ({this.modString(this.getModFromStat(this.state.DEX))}), 
-            <span className='title'>CON: </span>{this.state.CON} ({this.modString(this.getModFromStat(this.state.CON))}),</p>
-          <p><span className='title'>INT: </span>{this.state.INT} ({this.modString(this.getModFromStat(this.state.INT))}), 
-            <span className='title'>WIS: </span>{this.state.WIS} ({this.modString(this.getModFromStat(this.state.WIS))}), 
-            <span className='title'>CHA: </span>{this.state.CHA} ({this.modString(this.getModFromStat(this.state.CHA))})</p> */}
-          <hr/>
-          <p><span className='title'>Proficiency Bonus: </span> +{this.state.proficiency}</p>
-          <p><span className='title'>Saving Throws: </span> WIS +{this.state.proficiency + this.getModFromStat(this.state.attributes.WIS.value)}, CHA +{this.state.proficiency + this.getModFromStat(this.state.attributes.CHA.value)}</p>
-          <hr/>
-          <Invocations level={this.state.level} pact={this.state.pact}/>
-          <hr/>
-          <Spells level={this.state.level}/>
-          <hr/>
-          <button className='project-button' onClick={this.letsBegin}>another</button>
+        <main>
+          <div id='stat-block'>
+            <h2 className='warlock-name'>{this.state.name}</h2>
+            <p className='running-title'>{this.state.species} Warlock, {this.randomBool(33) ? 'Devotee' : this.randomBool(50) ? 'Servant' : 'Minion'} of {this.state.patron}{this.state.pact !== '' ? ', Pact of the ' + this.state.pact : ''}</p>
+            <hr/>
+            <p><span className='title'>Level: </span>{this.state.level}</p>
+            <p><span className='title'>Hit Points: </span>{this.state.hitPoints}</p>
+            <p><span className='title'>Armor Class: </span> 12</p>
+            <p><span className='title'>Speed: </span> 30</p>
+            <hr/>
+            <Attributes att={this.state.attributes}/>
+            <hr/>
+            <p><span className='title'>Proficiency Bonus: </span> +{this.state.proficiency}</p>
+            <p><span className='title'>Saving Throws: </span> WIS +{this.state.proficiency + this.getModFromStat(this.state.attributes.WIS.value)}, CHA +{this.state.proficiency + this.getModFromStat(this.state.attributes.CHA.value)}</p>
+            <hr/>
+            <Invocations level={this.state.level} pact={this.state.pact}/>
+            <hr/>
+            <Spells level={this.state.level}/>
+            <hr/>
+          </div>
+          <div className='regenerate'>
+            <button className='generate-button' onClick={this.letsBegin}>another</button>
+          </div>
         </main>
         <Footer/>
       </div>
