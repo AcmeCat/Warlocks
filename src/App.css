@@ -54,7 +54,7 @@
 #stat-block {
   padding: 3rem;
   width: 60%;
-  max-width: 600px;
+  max-width: 750px;
   margin: 3rem auto;
   box-shadow: 5px 10px 20px black;
 }
@@ -64,6 +64,7 @@
   font-size: 3rem;
   color: darkred;
   margin-bottom: 16px;
+  margin-top: 0;
 }
 .running-title {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -93,12 +94,21 @@ h3 {
 }
 
 /* attributes */
+.all-attributes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+}
+
 .attribute-flex {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 1rem;
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
 .attribute {

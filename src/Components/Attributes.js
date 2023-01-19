@@ -3,7 +3,7 @@ import React from 'react';
 function Attributes({att}) {
 
     return (
-        <div>
+        <div className='all-attributes'>
             <div className='attribute-flex'>
                 <div className='attribute'>
                     <div className='attribute-name'>STR</div>
