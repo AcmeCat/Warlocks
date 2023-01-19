@@ -56,7 +56,7 @@
   width: 60%;
   max-width: 750px;
   margin: 3rem auto;
-  box-shadow: 5px 10px 20px black;
+  box-shadow: 5px 10px 20px #282c34;
 }
 
 .warlock-name {
@@ -112,13 +112,14 @@ h3 {
 }
 
 .attribute {
-  background-color: darkred;
-  color: whitesmoke;
+  background-color: whitesmoke;
   width: 10%;
   max-width: 7rem;
   min-width: 5rem;
+  border: 2px solid darkred;
   border-radius: 0.5rem;
   text-align: center;
+  box-shadow: 2px 4px 8px #282c34;
 }
 
 .attribute .value {
