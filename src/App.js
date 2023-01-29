@@ -31,7 +31,7 @@ class App extends React.Component {
       pact: "",
       proficiency: 2
     }
-    this.letsBegin = this.letsBegin.bind(this);
+    this.summon = this.summon.bind(this);
   }
 
   beginRitual () {
@@ -41,7 +41,7 @@ class App extends React.Component {
     }
   }
 
-  letsBegin () {
+  summon () {
     
     let level = this.getLevel();
     this.setState({
@@ -80,7 +80,7 @@ class App extends React.Component {
     })
 
     //scroll to stat block
-    const element = document.getElementById('stat-block');
+    const element = document.getElementById('stats');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -100,7 +100,7 @@ class App extends React.Component {
         <main>
           <section id='options'>
             <h2 id='options-heading'>Eye of newt, and toe of frog...</h2>
-            <form onSubmit={this.handleSubmit} id='options-form'>
+            <form onSubmit={this.summon} id='options-form'>
               <label className='option'>
                 Level:
                 <select className='option'>
@@ -128,8 +128,8 @@ class App extends React.Component {
                 Lair:
                 <input type="radio" value={this.state.value} onChange={this.handleChange} />
               </label>
-              <input type="submit" value="summon" className='generate-button'/>
             </form>
+            <button className='generate-button' onClick={this.summon}>summon</button>
           </section>
           <section id='stats'>
             <div id='stat-block'>
@@ -156,7 +156,7 @@ class App extends React.Component {
             Hello
           </div> */}
           <div className='regenerate'>
-            <button className='generate-button' onClick={this.letsBegin}>another</button>
+            <button className='generate-button' onClick={this.summon}>another</button>
           </div>
         </main>
         <Footer/>
