@@ -50,13 +50,37 @@
   background-color: purple;
 }
 
-/* main */
+/* options */
+#options {
+  padding: 3rem 0;
+  width: 60%;
+  max-width: 750px;
+  margin: 3rem auto;
+}
+
+#options-heading {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 2.5rem;
+  font-style: italic;
+  color: darkred;
+  margin-bottom: 2rem;
+  margin-top: 0;
+}
+
+/* stat-block */
+#stats {
+  background-color: #282c34;
+  padding: 1rem;
+}
+
 #stat-block {
   padding: 3rem;
   width: 60%;
   max-width: 750px;
   margin: 3rem auto;
-  box-shadow: 5px 10px 20px #282c34;
+  box-shadow: 5px 10px 20px darkred;
+  background-color: whitesmoke;
+  border-radius: 0.5rem;
 }
 
 .warlock-name {
