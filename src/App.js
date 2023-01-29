@@ -9,9 +9,7 @@ import NameAndTitle from './Components/NameAndTitle';
 //import {Link} from 'react-scroll'
 
 
-class App extends React.Component {
-
-  
+class App extends React.Component {  
 
   constructor(props) {
     super(props);
@@ -36,8 +34,12 @@ class App extends React.Component {
     this.letsBegin = this.letsBegin.bind(this);
   }
 
-  
-  
+  beginRitual () {
+    const element = document.getElementById('options');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 
   letsBegin () {
     
@@ -93,15 +95,18 @@ class App extends React.Component {
           <p>
             THE <span className='warlocks'>WARLOCKS</span> ARE COMING...
           </p>
-          <button className='generate-button' onClick={this.letsBegin}>begin ritual</button>
+          <button className='generate-button' onClick={this.beginRitual}>begin ritual</button>
         </header>
         <main>
           <section id='options'>
             <h2 id='options-heading'>Eye of newt, and toe of frog...</h2>
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} id='options-form'>
               <label className='option'>
                 Level:
-                <input type="text" value={this.state.value} onChange={this.handleChange} />
+                <select className='option'>
+                  <option value="someOption">Some option</option>
+                  <option value="otherOption">Other option</option>
+                </select>
               </label>
               <label className='option'>
                 Species:
