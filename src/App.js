@@ -87,7 +87,8 @@ class App extends React.Component {
   }
 
   render (){
-
+    const levels = [...new Array(20)].map((_, index) => index + 1)
+    
     return (
       <div className="App">
         <header className="App-header">
@@ -104,8 +105,8 @@ class App extends React.Component {
               <label className='option'>
                 Level:
                 <select className='option'>
-                  <option value="someOption">Some option</option>
-                  <option value="otherOption">Other option</option>
+                  <option value='random'>random</option>
+                  {levels.map((val) => <option key={val} value={val}>{val}</option>)}
                 </select>
               </label>
               <label className='option'>
