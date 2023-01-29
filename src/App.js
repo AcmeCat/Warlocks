@@ -87,7 +87,7 @@ class App extends React.Component {
   }
 
   render (){
-    
+
     return (
       <div className="App">
         <header className="App-header">
@@ -100,7 +100,7 @@ class App extends React.Component {
         <main>
           <section id='options'>
             <h2 id='options-heading'>Eye of newt, and toe of frog...</h2>
-            <form onSubmit={this.summon} id='options-form'>
+            <form id='options-form'>
               <label className='option'>
                 Level:
                 <select className='option'>

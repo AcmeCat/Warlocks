@@ -67,8 +67,15 @@
   margin-top: 0;
 }
 
+#options-form {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
 .option {
-  padding: 1rem;
+  margin-top: 2rem;
+  padding: 3rem;
 }
 
 /* stat-block */
