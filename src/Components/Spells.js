@@ -1,5 +1,5 @@
 import React from 'react';
-import data from '../data.json';
+import data from '../Data/data.json';
 
 function Spells({level}) {
     let numCantrips = Number.parseInt(data.levels[level]["cantrips"]);

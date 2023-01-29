@@ -1,0 +1,19 @@
+{
+    "Fiend": {
+        "subType": [
+            { "Demon Lord": ["Demogorgon", "Orcus", "Fraz'Urb-luu", "Baphomet"]},
+            {"Arch Devil": ["Asmodeus", "Dispater", "Mephistopheles", "Belial"]},
+            {"Pit Fiend": []},
+            {"Balor": []},
+            {"Ultroloth": []}
+        ],
+        "spells": {
+            "1": [],
+            "2": []
+        },
+        "boons": {
+            "3": "3rd level boon",
+            "7": "7th level boon"
+        }
+    }
+}

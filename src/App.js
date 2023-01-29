@@ -95,6 +95,9 @@ class App extends React.Component {
           <button className='generate-button' onClick={this.letsBegin}>generate</button>
         </header>
         <main>
+          {/* <div id='parameters'>
+            Some params... prolly a form or summink
+          </div> */}
           <div id='stat-block'>
             <h2 className='warlock-name'>{this.state.name}</h2>
             <p className='running-title'>{this.state.species} Warlock, {this.randomBool(33) ? 'Devotee' : this.randomBool(50) ? 'Servant' : 'Minion'} of {this.state.patron}{this.state.pact !== '' ? ', Pact of the ' + this.state.pact : ''}</p>
@@ -114,6 +117,9 @@ class App extends React.Component {
             <Spells level={this.state.level}/>
             <hr/>
           </div>
+          {/* <div id='map'>
+            Hello
+          </div> */}
           <div className='regenerate'>
             <button className='generate-button' onClick={this.letsBegin}>another</button>
           </div>
