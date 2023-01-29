@@ -115,7 +115,7 @@ class App extends React.Component {
                 Pact:
                 <input type="text" value={this.state.value} onChange={this.handleChange} />
               </label>
-              <input type="submit" value="Submit" />
+              <input type="submit" value="summon" className='generate-button'/>
             </form>
           </section>
           <section id='stats'>
