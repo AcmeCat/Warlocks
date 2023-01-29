@@ -1,8 +1,8 @@
 import React from 'react';
-import data from '../Data/patrons.json';
+//import data from '../Data/patrons.json';
 
 function NameAndTitle({details}) {
-    let patrons = data[details.patron];
+    //let patrons = data[details.patron];
 
     function randomBool (number) {
         return Math.floor(Math.random * 100) < number;
