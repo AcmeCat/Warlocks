@@ -93,32 +93,52 @@ class App extends React.Component {
           <p>
             THE <span className='warlocks'>WARLOCKS</span> ARE COMING...
           </p>
-          <button className='generate-button' onClick={this.letsBegin}>generate</button>
+          <button className='generate-button' onClick={this.letsBegin}>begin ritual</button>
         </header>
         <main>
-          {/* <div id='parameters'>
-            Some params... prolly a form or summink
-          </div> */}
-          <div id='stat-block'>
-            <NameAndTitle details={{"name": this.state.name, "species": this.state.species, "patron": this.state.patron, "pact": this.state.pact}} />
-            {/* <h2 className='warlock-name'>{this.state.name}</h2>
-            <p className='running-title'>{this.state.species} Warlock, {this.randomBool(33) ? 'Devotee' : this.randomBool(50) ? 'Servant' : 'Minion'} of {this.state.patron}{this.state.pact !== '' ? ', Pact of the ' + this.state.pact : ''}</p> */}
-            <hr/>
-            <p><span className='title'>Level: </span>{this.state.level}</p>
-            <p><span className='title'>Hit Points: </span>{this.state.hitPoints}</p>
-            <p><span className='title'>Armor Class: </span> 12</p>
-            <p><span className='title'>Speed: </span> 30</p>
-            <hr/>
-            <Attributes att={this.state.attributes}/>
-            <hr/>
-            <p><span className='title'>Proficiency Bonus: </span> +{this.state.proficiency}</p>
-            <p><span className='title'>Saving Throws: </span> WIS +{this.state.proficiency + this.getModFromStat(this.state.attributes.WIS.value)}, CHA +{this.state.proficiency + this.getModFromStat(this.state.attributes.CHA.value)}</p>
-            <hr/>
-            <Invocations level={this.state.level} pact={this.state.pact}/>
-            <hr/>
-            <Spells level={this.state.level}/>
-            <hr/>
-          </div>
+          <section id='options'>
+            <h2 id='options-heading'>Eye of newt, and toe of frog...</h2>
+            <form onSubmit={this.handleSubmit}>
+              <label>
+                Level:
+                <input type="text" value={this.state.value} onChange={this.handleChange} />
+              </label>
+              <label>
+                Species:
+                <input type="text" value={this.state.value} onChange={this.handleChange} />
+              </label>
+              <label>
+                Patron:
+                <input type="text" value={this.state.value} onChange={this.handleChange} />
+              </label>
+              <label>
+                Pact:
+                <input type="text" value={this.state.value} onChange={this.handleChange} />
+              </label>
+              <input type="submit" value="Submit" />
+            </form>
+          </section>
+          <section id='stats'>
+            <div id='stat-block'>
+              <NameAndTitle details={{'name': this.state.name, 'species': this.state.species, 'patron': this.state.patron, 'pact': this.state.pact}} />
+              <hr/>
+              <p><span className='title'>Level: </span>{this.state.level}</p>
+              <p><span className='title'>Hit Points: </span>{this.state.hitPoints}</p>
+              <p><span className='title'>Armor Class: </span> 12</p>
+              <p><span className='title'>Speed: </span> 30</p>
+              <hr/>
+              <Attributes att={this.state.attributes}/>
+              <hr/>
+              <p><span className='title'>Proficiency Bonus: </span> +{this.state.proficiency}</p>
+              <p><span className='title'>Saving Throws: </span> WIS +{this.state.proficiency + this.getModFromStat(this.state.attributes.WIS.value)}, CHA +{this.state.proficiency + this.getModFromStat(this.state.attributes.CHA.value)}</p>
+              <hr/>
+              <Invocations level={this.state.level} pact={this.state.pact}/>
+              <hr/>
+              <Spells level={this.state.level}/>
+              <hr/>
+            </div>
+          </section>
+          
           {/* <div id='map'>
             Hello
           </div> */}
