@@ -56,15 +56,14 @@
   width: 60%;
   max-width: 750px;
   margin: 3rem auto;
+  text-align: center;
 }
 
 #options-heading {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-style: italic;
   color: darkred;
-  margin-bottom: 2rem;
-  margin-top: 0;
 }
 
 #options-form {

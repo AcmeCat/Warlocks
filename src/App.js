@@ -99,7 +99,7 @@ class App extends React.Component {
         </header>
         <main>
           <section id='options'>
-            <h2 id='options-heading'>Eye of newt, and toe of frog...</h2>
+            <h2 id='options-heading'>...eye of newt, and toe of frog...</h2>
             <form id='options-form'>
               <label className='option'>
                 Level:
