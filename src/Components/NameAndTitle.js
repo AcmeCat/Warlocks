@@ -1,14 +1,14 @@
 import React from 'react';
 import data from '../Data/patrons.json';
 
-function NameAndTitle({name, species, patron, pact}) {
-    let patrons = data[patron];
+function NameAndTitle({details}) {
+    let patrons = data[details.patron];
     return (
       <div>
-        <h2 className='warlock-name'>{name}</h2>
-        <p className='running-title'>{species} Warlock, 
-            {this.randomBool(33) ? 'Devotee' : this.randomBool(50) ? 'Servant' : 'Minion'} of {patron}
-            {pact !== '' ? ', Pact of the ' + pact : ''}</p>
+        <h2 className='warlock-name'>{details.name}</h2>
+        <p className='running-title'>{details.species} Warlock, 
+            {this.randomBool(33) ? 'Devotee' : this.randomBool(50) ? 'Servant' : 'Minion'} of {details.patron}
+            {details.pact !== '' ? ', Pact of the ' + details.pact : ''}</p>
       </div> 
     )
   }

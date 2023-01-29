@@ -5,6 +5,7 @@ import React from 'react';
 import Spells from './Components/Spells.js'
 import Invocations from './Components/Invocations';
 import Attributes from './Components/Attributes';
+import NameAndTitle from './Components/NameAndTitle';
 //import {Link} from 'react-scroll'
 
 
@@ -99,8 +100,9 @@ class App extends React.Component {
             Some params... prolly a form or summink
           </div> */}
           <div id='stat-block'>
-            <h2 className='warlock-name'>{this.state.name}</h2>
-            <p className='running-title'>{this.state.species} Warlock, {this.randomBool(33) ? 'Devotee' : this.randomBool(50) ? 'Servant' : 'Minion'} of {this.state.patron}{this.state.pact !== '' ? ', Pact of the ' + this.state.pact : ''}</p>
+            <NameAndTitle details={{"name": this.state.name, "species": this.state.species, "patron": this.state.patron, "pact": this.state.pact}} />
+            {/* <h2 className='warlock-name'>{this.state.name}</h2>
+            <p className='running-title'>{this.state.species} Warlock, {this.randomBool(33) ? 'Devotee' : this.randomBool(50) ? 'Servant' : 'Minion'} of {this.state.patron}{this.state.pact !== '' ? ', Pact of the ' + this.state.pact : ''}</p> */}
             <hr/>
             <p><span className='title'>Level: </span>{this.state.level}</p>
             <p><span className='title'>Hit Points: </span>{this.state.hitPoints}</p>
