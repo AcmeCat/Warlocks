@@ -99,21 +99,29 @@ class App extends React.Component {
           <section id='options'>
             <h2 id='options-heading'>Eye of newt, and toe of frog...</h2>
             <form onSubmit={this.handleSubmit}>
-              <label>
+              <label className='option'>
                 Level:
                 <input type="text" value={this.state.value} onChange={this.handleChange} />
               </label>
-              <label>
+              <label className='option'>
                 Species:
                 <input type="text" value={this.state.value} onChange={this.handleChange} />
               </label>
-              <label>
+              <label className='option'>
                 Patron:
                 <input type="text" value={this.state.value} onChange={this.handleChange} />
               </label>
-              <label>
+              <label className='option'>
                 Pact:
                 <input type="text" value={this.state.value} onChange={this.handleChange} />
+              </label>
+              <label className='option'>
+                Ecology:
+                <input type="radio" value={this.state.value} onChange={this.handleChange} />
+              </label>
+              <label className='option'>
+                Lair:
+                <input type="radio" value={this.state.value} onChange={this.handleChange} />
               </label>
               <input type="submit" value="summon" className='generate-button'/>
             </form>
