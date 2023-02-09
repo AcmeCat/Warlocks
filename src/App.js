@@ -7,6 +7,7 @@ import Invocations from './Components/Invocations';
 import Attributes from './Components/Attributes';
 import NameAndTitle from './Components/NameAndTitle';
 //import {Link} from 'react-scroll'
+//import { useState } from 'react';
 
 
 class App extends React.Component {  
@@ -32,6 +33,7 @@ class App extends React.Component {
       proficiency: 2
     }
     this.summon = this.summon.bind(this);
+    this.handleLevelChange = this.handleLevelChange.bind(this);
   }
 
   beginRitual () {
@@ -43,14 +45,17 @@ class App extends React.Component {
 
   summon () {
     
-    let level = this.getLevel();
+    if (this.state.level === 'random') {
+      this.setState({level: this.getLevel()})
+    }
     this.setState({
-      level: level,
+      //TODO: remove getLevel when level is set in form below
+      level: this.getLevel(),
       name: this.getName(),
       species: this.getSpecies(),
       patron: this.getPatron()
     })
-    let stats = this.getStats(level);
+    let stats = this.getStats(this.state.level);
     this.setState({
       attributes: {
         STR: {value: stats[0], mod: this.getModFromStat(stats[0])},
@@ -61,11 +66,11 @@ class App extends React.Component {
         CHA: {value: stats[5], mod: this.getModFromStat(stats[5])}
       }
     })
-    let hp = this.calcHitPoints(level, this.getModFromStat(stats[2]));
+    let hp = this.calcHitPoints(this.state.level, this.getModFromStat(stats[2]));
     this.setState({
       hitPoints: hp
     })
-    if (level > 2) {
+    if (this.state.level > 2) {
       this.setState({
         pact: this.getPact()
       })
@@ -74,7 +79,7 @@ class App extends React.Component {
         pact: ''
       })
     }
-    let proficiency = this.calcProficiency(level);
+    let proficiency = this.calcProficiency(this.state.level);
     this.setState({
       proficiency: proficiency
     })
@@ -85,9 +90,15 @@ class App extends React.Component {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   }
+  handleLevelChange (e) {
+    this.setState({
+      level: e.target.value
+    })
+  }
 
   render (){
-    const levels = [...new Array(20)].map((_, index) => index + 1)
+    //const levels = [...new Array(20)].map((_, index) => index + 1)
+    //const [selectedLevel, setLevel] = useState(levels);
     
     return (
       <div className="App">
@@ -96,22 +107,24 @@ class App extends React.Component {
           <p>
             THE <span className='warlocks'>WARLOCKS</span> ARE COMING...
           </p>
-          <button className='generate-button' onClick={this.beginRitual}>begin ritual</button>
+          {/* TODO: CHANGE THE following onclick to beginRitual */}
+          <button className='generate-button' onClick={this.summon}>begin ritual</button>
         </header>
         <main>
           <section id='options'>
             <h2 id='options-heading'>...eye of newt, and toe of frog...</h2>
-            <form id='options-form'>
+            {/*TODO: modify below to set warlock parameters */}
+            {/* <form id='options-form'>
               <label className='option'>
                 Level:
-                <select className='option'>
+                <select className='option' onChange={this.handleLevelChange}>
                   <option value='random'>random</option>
                   {levels.map((val) => <option key={val} value={val}>{val}</option>)}
                 </select>
               </label>
               <label className='option'>
                 Species:
-                <input type="text" value={this.state.value} onChange={this.handleChange} />
+                <input type="text" value={this.state} onChange={this.handleChange} />
               </label>
               <label className='option'>
                 Patron:
@@ -129,8 +142,8 @@ class App extends React.Component {
                 Lair:
                 <input type="radio" value={this.state.value} onChange={this.handleChange} />
               </label>
-            </form>
-            <button className='generate-button' onClick={this.summon}>summon</button>
+            </form> */}
+            {/* <button className='generate-button' onClick={this.summon}>summon</button> */}
           </section>
           <section id='stats'>
             <div id='stat-block'>
